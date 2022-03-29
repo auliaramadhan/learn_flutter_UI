@@ -50,9 +50,9 @@ class _ItemViewState extends State<ItemView> {
     String description = _textEditingController.text;
     if (description != null && description.isNotEmpty) {
       if (widget.item != null) {
-        context.read<StateProvider>().editTask(widget.item!, description);
+        context.read<TodoProvider>().editTask(widget.item!, description);
       } else {
-        context.read<StateProvider>().addNewTask(description);
+        context.read<TodoProvider>().addNewTask(description);
       }
       Navigator.pop(context, _textEditingController.text);
     }

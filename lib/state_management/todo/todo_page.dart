@@ -1,14 +1,19 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as river;
+import 'package:flutter_ui/state_management/todo/todo_items.dart';
 import '../item_list_provider.dart';
 import './item_view.dart';
 import './todo_model.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as prov;
+import 'package:state_notifier/state_notifier.dart' as stateNotif;
 
 class TodoScreen extends StatelessWidget {
   TodoScreen({Key? key}) : super(key: key);
 
-  final provider  = StateProvider();
+  final provider = TodoProvider();
+  final providerValue = TodoProviderValue();
+  final providerState = TodoProviderState();
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +26,12 @@ class TodoScreen extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () => goToNewItemView(context),
       ),
-      body: ChangeNotifierProvider(
-        create: (_) => provider,
+      // body: prov.ChangeNotifierProvider(
+      //   create: (_) => provider,
+      //   child: TodoPage(),
+      // ),
+      body: prov.Provider(
+        create: (_) => providerValue,
         child: TodoPage(),
       ),
     );
@@ -32,8 +41,12 @@ class TodoScreen extends StatelessWidget {
     showDialog(
         context: ctx,
         builder: (_) {
-          return ChangeNotifierProvider.value(
-            value: provider,
+          // return prov.ChangeNotifierProvider.value(
+          //   value: provider,
+          //   child: ItemView(),
+          // );
+          return prov.ValueListenableProvider.value(
+            value: providerValue,
             child: ItemView(),
           );
         });
@@ -46,9 +59,28 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
+  late final TodoProvider myNotifier;
+
+    void listener() {
+      // Do something
+      print(myNotifier.items.length);
+    }
+  @override
+  void initState() {
+    super.initState();
+    myNotifier = context.read<TodoProvider>();
+    myNotifier.addListener(listener);
+  }
+
+  @override
+  void dispose() {
+    myNotifier.removeListener(listener);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<StateProvider>(
+    return prov.Consumer<TodoProvider>(
       builder: (context, value, child) {
         return value.items.isEmpty
             ? Text("empty")
@@ -70,64 +102,10 @@ class _TodoPageState extends State<TodoPage> {
     showDialog(
         context: ctx,
         builder: (_) {
-          return ChangeNotifierProvider.value(
-            value: context.read<StateProvider>(),
+          return prov.ChangeNotifierProvider.value(
+            value: context.read<TodoProvider>(),
             child: ItemView(item: item),
           );
         });
-  }
-}
-
-class TodoItem extends StatelessWidget {
-  final Todo item;
-  final Function(Todo) onTap;
-  final Function(Todo) onLongPress;
-  final Function(Todo) onDismissed;
-
-  TodoItem({required this.item, required this.onTap, required this.onDismissed, required this.onLongPress});
-
-  @override
-  Widget build(BuildContext context) {
-    return Dismissible(
-      key: Key(item.hashCode.toString()),
-      direction: DismissDirection.horizontal,
-      background: Container(
-        padding: EdgeInsets.only(left: 12),
-        color: Colors.red,
-        child: Icon(
-          Icons.delete,
-          color: Colors.white,
-        ),
-        alignment: Alignment.centerLeft,
-      ),
-      secondaryBackground:Container(
-        padding: EdgeInsets.only(right: 12),
-        color: Colors.green,
-        child: Icon(
-          Icons.edit,
-          color: Colors.white,
-        ),
-        alignment: Alignment.centerRight,
-      ),
-      
-      onDismissed: (direction) {
-          onDismissed(item);
-        /* if (DismissDirection.startToEnd == direction) {
-          onDismissed(item);
-        }else if(DismissDirection.endToStart == direction){
-          onLongPress(item);
-          print('adasas');
-        } */
-      },
-      child: ListTile(
-        title: Text(
-          item.description,
-          style: TextStyle(decoration: item.complete ? TextDecoration.lineThrough : null),
-        ),
-        trailing: Icon(item.complete ? Icons.check_box : Icons.check_box_outline_blank),
-        onTap: () => onTap(item),
-        onLongPress: () => onLongPress(item),
-      ),
-    );
   }
 }

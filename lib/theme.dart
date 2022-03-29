@@ -34,7 +34,7 @@ class MyThemes {
       style: OutlinedButton.styleFrom(),
     ),
     fontFamily: "Montserrat",
-    // typography: Typography.material2018(),
+    typography: Typography.material2018(),
     textTheme: const TextTheme(
       // bodyText1: TextStyle(debugLabel: 'bodyText1', color: Colors.black54, decoration: TextDecoration.none, fontSize: 12),
       // bodyText2: TextStyle(debugLabel: 'bodyText2', color: Colors.black54, decoration: TextDecoration.none, fontSize: 14),

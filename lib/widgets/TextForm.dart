@@ -15,7 +15,9 @@ class TextInput extends StatelessWidget {
     return TextFormField(
       focusNode: focusNode,
       decoration: InputDecoration(
+        // for blur text that will be  hidden after fill
         hintText: "email",
+        // for floating text
         labelText: "email",
         prefixIcon: const Icon(Icons.email),
         suffixIcon: IconButton(

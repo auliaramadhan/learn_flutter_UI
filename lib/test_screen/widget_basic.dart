@@ -60,7 +60,6 @@ class WidgetBasicScreen extends StatelessWidget {
 
             const ExtraHeight(),
             FormData(),
-
             TransformExample(),
             // MovingCardWidget(urlFront: ImageNetworks.frontCard, urlBack: ImageNetworks.frontCard),
             StreamExample(),

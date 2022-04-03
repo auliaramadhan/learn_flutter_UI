@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/state_management/todo/todo_page.dart';
+import 'package:flutter_ui/test_screen/widget_basic2.dart';
 import 'package:flutter_ui/utils/debug.dart';
 import '../test_screen/scaffold_advanced.dart';
 import '../test_screen/route_aware.dart';
@@ -17,6 +18,7 @@ part 'auto_routes.gr.dart';
     AutoRoute(page: AdvanceScaffoldScreen ),
     AutoRoute(page: RouteAwareScreen ),
     AutoRoute(page: TodoScreen  ),
+    AutoRoute(page: WidgetBasic2  ),
   ],
 )
 class AppRouter extends _$AppRouter {}

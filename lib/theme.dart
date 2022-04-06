@@ -10,7 +10,9 @@ class MyThemes {
     colorScheme: ColorScheme.dark(),
   );
 
-  static final lightTheme = ThemeData(
+  // static final lightTheme = (BuildContext ctx) => ThemeData(
+  // ignore: prefer_function_declarations_over_variables
+  static final lightTheme = (BuildContext ctx) => ThemeData(
     scaffoldBackgroundColor: Colors.white,
     //  kadang ini ga bisa
     // primaryColor: ColorApp.primary,
@@ -35,11 +37,17 @@ class MyThemes {
     ),
     fontFamily: "Montserrat",
     typography: Typography.material2018(),
-    textTheme: const TextTheme(
-      // bodyText1: TextStyle(debugLabel: 'bodyText1', color: Colors.black54, decoration: TextDecoration.none, fontSize: 12),
-      // bodyText2: TextStyle(debugLabel: 'bodyText2', color: Colors.black54, decoration: TextDecoration.none, fontSize: 14),
-      
-    ),
+    // textTheme: const TextTheme(
+    //   bodyText1: TextStyle(debugLabel: 'bodyText1', color: Colors.black54, decoration: TextDecoration.none, fontSize: 12),
+    //   bodyText2: TextStyle(debugLabel: 'bodyText2', color: Colors.black54, decoration: TextDecoration.none, fontSize: 14),
+
+    // ),
+    // textTheme: TextTheme().copyWith(),
+    textTheme: Theme.of(ctx).textTheme.apply(
+          bodyColor: Colors.black,
+          displayColor: Colors.grey,
+        ),
+
     appBarTheme: const AppBarTheme(
       centerTitle: true,
       elevation: 8,

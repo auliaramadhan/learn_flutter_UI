@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Demo',
-      theme: MyThemes.lightTheme,
+      theme: MyThemes.lightTheme(context),
       themeMode: ThemeMode.light,
       //------------ my normal Route----------
       // onGenerateRoute: RoutesApp.generateRoute,

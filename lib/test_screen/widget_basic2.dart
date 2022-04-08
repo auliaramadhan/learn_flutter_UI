@@ -6,8 +6,8 @@ import 'package:flutter_ui/widgets/radio.dart';
 import 'package:flutter_ui/widgets/spacing.dart';
 import 'package:flutter_ui/widgets/text.dart';
 
-class WidgetBasic2 extends StatelessWidget {
-  const WidgetBasic2({Key? key}) : super(key: key);
+class WidgetBasic2Screen extends StatelessWidget {
+  const WidgetBasic2Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

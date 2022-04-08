@@ -18,7 +18,7 @@ part 'auto_routes.gr.dart';
     AutoRoute(page: AdvanceScaffoldScreen ),
     AutoRoute(page: RouteAwareScreen ),
     AutoRoute(page: TodoScreen  ),
-    AutoRoute(page: WidgetBasic2  ),
+    AutoRoute(page: WidgetBasic2Screen  ),
   ],
 )
 class AppRouter extends _$AppRouter {}

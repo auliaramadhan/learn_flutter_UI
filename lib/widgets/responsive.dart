@@ -59,7 +59,22 @@ class FittedExample extends StatelessWidget {
 }
 
 class ResponsiveBuilder extends StatelessWidget {
-  const ResponsiveBuilder({Key? key}) : super(key: key);
+  ResponsiveBuilder({Key? key}) : super(key: key);
+
+  final _keyWidget = GlobalKey();
+
+  Size get _getWidgetSize {
+    final keyContext = _keyWidget.currentContext;
+    final box = keyContext?.findRenderObject() as RenderBox?;
+    return box?.size ?? Size.zero;
+  }
+
+  Offset get _getWidgetPosition {
+    final keyContext = _keyWidget.currentContext;
+    final box = keyContext!.findRenderObject() as RenderBox?;
+    final pos = box?.localToGlobal(Offset.zero);
+    return pos ?? Offset.zero;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +115,13 @@ class ResponsiveBuilder extends StatelessWidget {
             },
           ),
         ),
+        Text('Key widget x ${_getWidgetSize.width} y ${_getWidgetSize.height}'),
+        Text('Key widget dx ${_getWidgetPosition.dx} dy ${_getWidgetPosition.dy}'),
+        SizedBox(
+          key: _keyWidget,
+          height: 200,
+          width: 200,
+        )
       ],
     );
   }

@@ -38,16 +38,35 @@ class TextRich extends StatelessWidget {
   }
 }
 
-class TextAlign extends StatelessWidget {
-  const TextAlign({Key? key}) : super(key: key);
+class TextAnimasi extends StatefulWidget {
+  const TextAnimasi({Key? key}) : super(key: key);
+
+  @override
+  State<TextAnimasi> createState() => _TextAnimasiState();
+}
+
+class _TextAnimasiState extends State<TextAnimasi> {
+  var _fontSize = 12.0;
+  var black = Colors.black;
+  var underline = TextDecoration.underline;
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
-      child: Text(
-        'asdawd',
-        style: TextStyle(fontSize: 15),
-        overflow: TextOverflow.ellipsis,
+    return SizedBox.square(
+      dimension: 200,
+      child: AnimatedDefaultTextStyle(
+        duration: Duration(seconds: 1),
+        style: TextStyle(fontSize: _fontSize, decoration: underline, color: black),
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              _fontSize = 16.0;
+              black = Colors.green;
+              underline = TextDecoration.lineThrough;
+            });
+          },
+          child: Text('Animasi Klik'),
+        ),
       ),
     );
   }

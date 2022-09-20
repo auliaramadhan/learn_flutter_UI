@@ -34,22 +34,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  auto_route: ^3.2.4
+  auto_route: ^5.0.1
   http: ^0.13.4
-  keyboard_dismisser: ^2.0.0
+  keyboard_dismisser: ^3.0.0
   flutter_riverpod: ^1.0.3
   provider: ^6.0.2
   equatable: ^2.0.3
   state_notifier: ^0.7.2+1
   bloc: ^8.0.3
   flutter_bloc: ^8.0.1
-  freezed_annotation: ^1.1.0
+  freezed_annotation: ^2.1.0
   uuid: ^3.0.6
-  flutter_secure_storage: ^4.2.1
+  flutter_secure_storage: ^6.0.0
 
 dev_dependencies:
-  auto_route_generator: ^3.2.3
-  freezed: ^1.1.1
+  auto_route_generator: ^5.0.2
+  freezed: ^2.1.0+1
   flutter_test:
     sdk: flutter
 
@@ -58,7 +58,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
   build_runner: ^2.1.7
 
 # For information on the generic Dart part of this file, see the

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../test_screen/route_aware.dart';
+import '../test_screen/route_aware/route_aware.dart';
 import '../test_screen/scaffold_advanced.dart';
 import '../test_screen/widget_basic.dart';
 
@@ -23,9 +23,26 @@ class RoutesApp {
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
-                  body: Center(
-                      child: Text('No route defined for ${settings.name}')),
+                  body: Center(child: Text('No route defined for ${settings.name}')),
                 ));
     }
   }
+}
+
+// FOR ROUTEAWARE
+final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
+
+class MyRouteObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+  @override
+  void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+  @override
+  void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {}
+  @override
+  void didStartUserGesture(Route<dynamic> route, Route<dynamic>? previousRoute) {}
+  @override
+  void didStopUserGesture() {}
 }

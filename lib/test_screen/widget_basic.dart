@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/extends_utility/stream_build.dart';
 import 'package:flutter_ui/extends_utility/transform.dart';
 import 'package:flutter_ui/images.dart';
-import 'package:flutter_ui/utils/auto_routes.dart';
+import 'package:flutter_ui/test_screen/route_aware/autorouter/auto_routes.dart';
 import 'package:flutter_ui/widgets/inkwell.dart';
 import '../utils/routes.dart';
 import '../widgets/TextForm.dart';
@@ -43,7 +43,8 @@ class WidgetBasicScreen extends StatelessWidget {
             const ExtraHeight(),
             ButtonPrimary(
               onPressed: () {
-                context.router.push(const RouteAwareRoute());
+                
+                // context.router.push(const RouteAwareRoute());
               },
               text: "Go to Aware",
             ),

@@ -1,27 +1,23 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/state_management/todo/todo_page.dart';
-import 'package:flutter_ui/test_screen/widget_basic2.dart';
-import 'package:flutter_ui/utils/debug.dart';
-import '../test_screen/scaffold_advanced.dart';
-import '../test_screen/route_aware.dart';
-import '../test_screen/widget_basic.dart';
 
-part 'auto_routes.gr.dart';
+import 'auto_route_initial.dart';
+import '../../../utils/debug.dart';
+
+part './auto_routes.gr.dart';
+
+// flutter packages pub run build_runner build --delete-conflicting-outputs
 
 @MaterialAutoRouter(
   // harus ada screen di namanya akan diganti Route
   replaceInRouteName: 'Screen,Route',
   routes: [
-    AutoRoute(page: WidgetBasicScreen, initial: true),
-    AutoRoute(page: AdvanceScaffoldScreen ),
-    AutoRoute(page: RouteAwareScreen ),
-    AutoRoute(page: TodoScreen  ),
-    AutoRoute(page: WidgetBasic2Screen  ),
+    AutoRoute(page: PageInitialScreen, initial: true),
+    AutoRoute(page: PageNumberScreen),
   ],
 )
-class AppRouter extends _$AppRouter {}
+class AppAutoRouteRouter extends _$AppAutoRouteRouter {}
 
 class MyObserver extends AutoRouterObserver {
   @override

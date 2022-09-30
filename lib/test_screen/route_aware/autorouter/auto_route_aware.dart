@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/utils/auto_routes.dart';
-import '../main.dart';
-import '../utils/routes.dart';
-import '../widgets/button.dart';
+import 'package:flutter_ui/test_screen/route_aware/autorouter/auto_routes.dart';
+import '../../../main.dart';
+import '../../../utils/routes.dart';
+import '../../../widgets/button.dart';
 
 class RouteAwareScreen extends StatefulWidget {
   const RouteAwareScreen({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class RouteAwareScreen extends StatefulWidget {
   _RouteObservereScreenState createState() => _RouteObservereScreenState();
 }
 
-    // normal autorouteAware
+// normal autorouteAware
 // class _RouteObservereScreenState extends State<RouteAwareScreen> with RouteAware {
 class _RouteObservereScreenState extends State<RouteAwareScreen> with AutoRouteAware {
   var action = "";
@@ -67,12 +67,12 @@ class _RouteObservereScreenState extends State<RouteAwareScreen> with AutoRouteA
     // });
 
     // --- auto route aware-----
-    _observer = RouterScope.of(context).firstObserverOfType<AutoRouteObserver>();    
-    if (_observer != null) {    
-      // we subscribe to the observer by passing our    
-      // AutoRouteAware state and the scoped routeData    
-      _observer!.subscribe(this, context.routeData);    
-    }    
+    _observer = RouterScope.of(context).firstObserverOfType<AutoRouteObserver>();
+    if (_observer != null) {
+      // we subscribe to the observer by passing our
+      // AutoRouteAware state and the scoped routeData
+      _observer!.subscribe(this, context.routeData);
+    }
 
     super.initState();
   }
@@ -93,7 +93,7 @@ class _RouteObservereScreenState extends State<RouteAwareScreen> with AutoRouteA
               Text("what just happen $action"),
               ButtonPrimary(
                 text: 'to screen',
-                onPressed: () => AutoRouter.of(context).push(const AdvanceScaffoldRoute()),
+                onPressed: () => AutoRouter.of(context).push(PageNumberRoute(numberpae: 'qwe')),
                 // normalRoute
                 // onPressed: () => Navigator.of(context).pushNamed(RoutesName.AdvanceScaffold),
               )
@@ -104,3 +104,5 @@ class _RouteObservereScreenState extends State<RouteAwareScreen> with AutoRouteA
     );
   }
 }
+
+

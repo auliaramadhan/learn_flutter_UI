@@ -2,7 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ui/utils/auto_routes.dart';
+import 'package:flutter_ui/test_screen/route_aware/autorouter/auto_routes.dart';
 import '../images.dart';
 import 'spacing.dart';
 
@@ -33,7 +33,7 @@ class Sidebar extends StatelessWidget {
             buildSearchField(),
             const ExtraHeight(),
             buildMenuItem(
-              onClicked: () => AutoRouter.of(context).navigate(TodoRoute()),
+              // onClicked: () => AutoRouter.of(context).navigate(TodoRoute()),
               text: "Todo",
               icon: Icons.today_outlined,
             ),
@@ -76,7 +76,7 @@ class Sidebar extends StatelessWidget {
               const Spacer(),
               const CircleAvatar(
                 radius: 24,
-                backgroundColor: const Color.fromRGBO(30, 60, 168, 1),
+                backgroundColor: Color.fromRGBO(30, 60, 168, 1),
                 child: Icon(Icons.add_comment_outlined),
               )
             ],

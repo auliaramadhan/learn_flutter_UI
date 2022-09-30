@@ -12,31 +12,7 @@ part of 'todo_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TodoListStateTearOff {
-  const _$TodoListStateTearOff();
-
-  _ListLoaded loaded(List<Todo> todo) {
-    return _ListLoaded(
-      todo,
-    );
-  }
-
-  _ListError error(String errorText) {
-    return _ListError(
-      errorText,
-    );
-  }
-
-  _ListLoading loading() {
-    return const _ListLoading();
-  }
-}
-
-/// @nodoc
-const $TodoListState = _$TodoListStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TodoListState {
@@ -104,30 +80,31 @@ class _$TodoListStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ListLoadedCopyWith<$Res> {
-  factory _$ListLoadedCopyWith(
-          _ListLoaded value, $Res Function(_ListLoaded) then) =
-      __$ListLoadedCopyWithImpl<$Res>;
+abstract class _$$_ListLoadedCopyWith<$Res> {
+  factory _$$_ListLoadedCopyWith(
+          _$_ListLoaded value, $Res Function(_$_ListLoaded) then) =
+      __$$_ListLoadedCopyWithImpl<$Res>;
   $Res call({List<Todo> todo});
 }
 
 /// @nodoc
-class __$ListLoadedCopyWithImpl<$Res> extends _$TodoListStateCopyWithImpl<$Res>
-    implements _$ListLoadedCopyWith<$Res> {
-  __$ListLoadedCopyWithImpl(
-      _ListLoaded _value, $Res Function(_ListLoaded) _then)
-      : super(_value, (v) => _then(v as _ListLoaded));
+class __$$_ListLoadedCopyWithImpl<$Res>
+    extends _$TodoListStateCopyWithImpl<$Res>
+    implements _$$_ListLoadedCopyWith<$Res> {
+  __$$_ListLoadedCopyWithImpl(
+      _$_ListLoaded _value, $Res Function(_$_ListLoaded) _then)
+      : super(_value, (v) => _then(v as _$_ListLoaded));
 
   @override
-  _ListLoaded get _value => super._value as _ListLoaded;
+  _$_ListLoaded get _value => super._value as _$_ListLoaded;
 
   @override
   $Res call({
     Object? todo = freezed,
   }) {
-    return _then(_ListLoaded(
+    return _then(_$_ListLoaded(
       todo == freezed
-          ? _value.todo
+          ? _value._todo
           : todo // ignore: cast_nullable_to_non_nullable
               as List<Todo>,
     ));
@@ -137,10 +114,14 @@ class __$ListLoadedCopyWithImpl<$Res> extends _$TodoListStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ListLoaded implements _ListLoaded {
-  const _$_ListLoaded(this.todo);
+  const _$_ListLoaded(final List<Todo> todo) : _todo = todo;
 
+  final List<Todo> _todo;
   @override
-  final List<Todo> todo;
+  List<Todo> get todo {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_todo);
+  }
 
   @override
   String toString() {
@@ -151,18 +132,18 @@ class _$_ListLoaded implements _ListLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ListLoaded &&
-            const DeepCollectionEquality().equals(other.todo, todo));
+            other is _$_ListLoaded &&
+            const DeepCollectionEquality().equals(other._todo, _todo));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(todo));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_todo));
 
   @JsonKey(ignore: true)
   @override
-  _$ListLoadedCopyWith<_ListLoaded> get copyWith =>
-      __$ListLoadedCopyWithImpl<_ListLoaded>(this, _$identity);
+  _$$_ListLoadedCopyWith<_$_ListLoaded> get copyWith =>
+      __$$_ListLoadedCopyWithImpl<_$_ListLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -234,36 +215,37 @@ class _$_ListLoaded implements _ListLoaded {
 }
 
 abstract class _ListLoaded implements TodoListState {
-  const factory _ListLoaded(List<Todo> todo) = _$_ListLoaded;
+  const factory _ListLoaded(final List<Todo> todo) = _$_ListLoaded;
 
   List<Todo> get todo;
   @JsonKey(ignore: true)
-  _$ListLoadedCopyWith<_ListLoaded> get copyWith =>
+  _$$_ListLoadedCopyWith<_$_ListLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ListErrorCopyWith<$Res> {
-  factory _$ListErrorCopyWith(
-          _ListError value, $Res Function(_ListError) then) =
-      __$ListErrorCopyWithImpl<$Res>;
+abstract class _$$_ListErrorCopyWith<$Res> {
+  factory _$$_ListErrorCopyWith(
+          _$_ListError value, $Res Function(_$_ListError) then) =
+      __$$_ListErrorCopyWithImpl<$Res>;
   $Res call({String errorText});
 }
 
 /// @nodoc
-class __$ListErrorCopyWithImpl<$Res> extends _$TodoListStateCopyWithImpl<$Res>
-    implements _$ListErrorCopyWith<$Res> {
-  __$ListErrorCopyWithImpl(_ListError _value, $Res Function(_ListError) _then)
-      : super(_value, (v) => _then(v as _ListError));
+class __$$_ListErrorCopyWithImpl<$Res> extends _$TodoListStateCopyWithImpl<$Res>
+    implements _$$_ListErrorCopyWith<$Res> {
+  __$$_ListErrorCopyWithImpl(
+      _$_ListError _value, $Res Function(_$_ListError) _then)
+      : super(_value, (v) => _then(v as _$_ListError));
 
   @override
-  _ListError get _value => super._value as _ListError;
+  _$_ListError get _value => super._value as _$_ListError;
 
   @override
   $Res call({
     Object? errorText = freezed,
   }) {
-    return _then(_ListError(
+    return _then(_$_ListError(
       errorText == freezed
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
@@ -289,7 +271,7 @@ class _$_ListError implements _ListError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ListError &&
+            other is _$_ListError &&
             const DeepCollectionEquality().equals(other.errorText, errorText));
   }
 
@@ -299,8 +281,8 @@ class _$_ListError implements _ListError {
 
   @JsonKey(ignore: true)
   @override
-  _$ListErrorCopyWith<_ListError> get copyWith =>
-      __$ListErrorCopyWithImpl<_ListError>(this, _$identity);
+  _$$_ListErrorCopyWith<_$_ListError> get copyWith =>
+      __$$_ListErrorCopyWithImpl<_$_ListError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -372,30 +354,31 @@ class _$_ListError implements _ListError {
 }
 
 abstract class _ListError implements TodoListState {
-  const factory _ListError(String errorText) = _$_ListError;
+  const factory _ListError(final String errorText) = _$_ListError;
 
   String get errorText;
   @JsonKey(ignore: true)
-  _$ListErrorCopyWith<_ListError> get copyWith =>
+  _$$_ListErrorCopyWith<_$_ListError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$ListLoadingCopyWith<$Res> {
-  factory _$ListLoadingCopyWith(
-          _ListLoading value, $Res Function(_ListLoading) then) =
-      __$ListLoadingCopyWithImpl<$Res>;
+abstract class _$$_ListLoadingCopyWith<$Res> {
+  factory _$$_ListLoadingCopyWith(
+          _$_ListLoading value, $Res Function(_$_ListLoading) then) =
+      __$$_ListLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ListLoadingCopyWithImpl<$Res> extends _$TodoListStateCopyWithImpl<$Res>
-    implements _$ListLoadingCopyWith<$Res> {
-  __$ListLoadingCopyWithImpl(
-      _ListLoading _value, $Res Function(_ListLoading) _then)
-      : super(_value, (v) => _then(v as _ListLoading));
+class __$$_ListLoadingCopyWithImpl<$Res>
+    extends _$TodoListStateCopyWithImpl<$Res>
+    implements _$$_ListLoadingCopyWith<$Res> {
+  __$$_ListLoadingCopyWithImpl(
+      _$_ListLoading _value, $Res Function(_$_ListLoading) _then)
+      : super(_value, (v) => _then(v as _$_ListLoading));
 
   @override
-  _ListLoading get _value => super._value as _ListLoading;
+  _$_ListLoading get _value => super._value as _$_ListLoading;
 }
 
 /// @nodoc
@@ -411,7 +394,7 @@ class _$_ListLoading implements _ListLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ListLoading);
+        (other.runtimeType == runtimeType && other is _$_ListLoading);
   }
 
   @override
@@ -491,28 +474,6 @@ abstract class _ListLoading implements TodoListState {
 }
 
 /// @nodoc
-class _$TodoStateTearOff {
-  const _$TodoStateTearOff();
-
-  _NoError noError() {
-    return const _NoError();
-  }
-
-  _Error error(String errorText) {
-    return _Error(
-      errorText,
-    );
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-}
-
-/// @nodoc
-const $TodoState = _$TodoStateTearOff();
-
-/// @nodoc
 mixin _$TodoState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -576,19 +537,20 @@ class _$TodoStateCopyWithImpl<$Res> implements $TodoStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$NoErrorCopyWith<$Res> {
-  factory _$NoErrorCopyWith(_NoError value, $Res Function(_NoError) then) =
-      __$NoErrorCopyWithImpl<$Res>;
+abstract class _$$_NoErrorCopyWith<$Res> {
+  factory _$$_NoErrorCopyWith(
+          _$_NoError value, $Res Function(_$_NoError) then) =
+      __$$_NoErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NoErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
-    implements _$NoErrorCopyWith<$Res> {
-  __$NoErrorCopyWithImpl(_NoError _value, $Res Function(_NoError) _then)
-      : super(_value, (v) => _then(v as _NoError));
+class __$$_NoErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$$_NoErrorCopyWith<$Res> {
+  __$$_NoErrorCopyWithImpl(_$_NoError _value, $Res Function(_$_NoError) _then)
+      : super(_value, (v) => _then(v as _$_NoError));
 
   @override
-  _NoError get _value => super._value as _NoError;
+  _$_NoError get _value => super._value as _$_NoError;
 }
 
 /// @nodoc
@@ -604,7 +566,7 @@ class _$_NoError implements _NoError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _NoError);
+        (other.runtimeType == runtimeType && other is _$_NoError);
   }
 
   @override
@@ -684,26 +646,26 @@ abstract class _NoError implements TodoState {
 }
 
 /// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
+abstract class _$$_ErrorCopyWith<$Res> {
+  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
+      __$$_ErrorCopyWithImpl<$Res>;
   $Res call({String errorText});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
+class __$$_ErrorCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$$_ErrorCopyWith<$Res> {
+  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+      : super(_value, (v) => _then(v as _$_Error));
 
   @override
-  _Error get _value => super._value as _Error;
+  _$_Error get _value => super._value as _$_Error;
 
   @override
   $Res call({
     Object? errorText = freezed,
   }) {
-    return _then(_Error(
+    return _then(_$_Error(
       errorText == freezed
           ? _value.errorText
           : errorText // ignore: cast_nullable_to_non_nullable
@@ -729,7 +691,7 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Error &&
+            other is _$_Error &&
             const DeepCollectionEquality().equals(other.errorText, errorText));
   }
 
@@ -739,8 +701,8 @@ class _$_Error implements _Error {
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -812,27 +774,29 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements TodoState {
-  const factory _Error(String errorText) = _$_Error;
+  const factory _Error(final String errorText) = _$_Error;
 
   String get errorText;
   @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$$_LoadingCopyWithImpl<$Res> extends _$TodoStateCopyWithImpl<$Res>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -848,7 +812,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override

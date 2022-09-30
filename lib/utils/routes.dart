@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../test_screen/route_aware/route_aware.dart';
+import '../test_screen/route_aware/autorouter/auto_route_aware.dart';
 import '../test_screen/scaffold_advanced.dart';
 import '../test_screen/widget_basic.dart';
 

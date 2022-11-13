@@ -4,11 +4,12 @@ import 'package:flutter_ui/test_screen/route_aware/autorouter/auto_routes.dart';
 import 'package:flutter_ui/widgets/button.dart';
 
 class AutoRouteScaffold extends StatelessWidget {
-  const AutoRouteScaffold({Key? key}) : super(key: key);
+  AutoRouteScaffold({Key? key}) : super(key: key);
+  
+  final _autoRouter = AppAutoRouteRouter();
 
   @override
   Widget build(BuildContext context) {
-    final _autoRouter = AppAutoRouteRouter();
     return WillPopScope(
       onWillPop: () async {
         if (_autoRouter.canPop()) {

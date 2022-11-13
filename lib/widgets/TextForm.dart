@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_ui/utils/string_formatter.dart';
 import '../colors.dart';
 import 'button.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
@@ -47,7 +49,7 @@ class FormData extends StatefulWidget {
 }
 
 final GlobalKey<FormState> formKey = GlobalKey(debugLabel: "form");
-final formUnfocusKey = GlobalKey<FormState>( debugLabel: "formUnfocous");
+final formUnfocusKey = GlobalKey<FormState>(debugLabel: "formUnfocous");
 final emailFocus = FocusNode();
 
 class _FormDataState extends State<FormData> {
@@ -150,5 +152,45 @@ class _KeyboardDismissState extends State<KeyboardDismiss> {
         ),
       ),
     );
+  }
+}
+
+abstract class AppInputFormatter {
+  final regexFormatter = FilteringTextInputFormatter.allow(RegExp(r' (0-9) '));
+  // Example
+  final regexLetter = FilteringTextInputFormatter.allow(RegExp(r' [a-zA-Z]')); //only letters;
+  final regexNoLine = FilteringTextInputFormatter.deny(RegExp(r'\n')); // - single line;
+  final regexNoDash = FilteringTextInputFormatter.deny(RegExp(r'[-]')); // - without dashes;
+
+  //
+  final lengthFormat = LengthLimitingTextInputFormatter(4);
+}
+
+class CustomCUrrencyFormat extends TextInputFormatter {
+  final String sample;
+  final String separator;
+  CustomCUrrencyFormat({
+    required this.sample,
+    required this.separator,
+  }) {
+    assert(sample != null);
+    assert(separator != null);
+  }
+
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    if (newValue.text.isNotEmpty) {
+      if (newValue.text.length > 3) {
+        final tempLastChar = newValue.text.substring(newValue.text.length - 1);
+        final num = AppFormatter.getNumCurrency(newValue.text.substring(0, newValue.text.length - 1))!;
+        final pricenum = (num * 10) + int.parse(tempLastChar);
+        final price = AppFormatter.setCurrency(pricenum);
+        return TextEditingValue(
+          // new value for price
+          text: price!,
+        );
+      }
+    }
+    return newValue;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui/widgets/button.dart';
 import '../item_list_provider.dart';
 import './todo_model.dart';
 import 'package:provider/provider.dart';
@@ -36,8 +37,8 @@ class _ItemViewState extends State<ItemView> {
               autofocus: true,
             ),
             SizedBox(height: 10),
-            RaisedButton(
-              child: Text('Submit'),
+            ButtonPrimary(
+              text: 'Submit',
               onPressed: submit,
             )
           ],
